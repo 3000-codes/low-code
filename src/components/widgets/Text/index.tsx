@@ -45,10 +45,10 @@ const Text = (props: ITextProps) => {
       textRef.current!.focus()
     }, 0)
   }
-  const handlePaste = (e: any) => {}
-  const handleMouseDown = (e: any) => {}
-  const handleBlur = (e: any) => {}
-  const handleInput = (e: any) => {}
+  const handlePaste = (_: any) => {}
+  const handleMouseDown = (_: any) => {}
+  const handleBlur = (_: any) => {}
+  const handleInput = (_: any) => {}
 
   return (
     <>

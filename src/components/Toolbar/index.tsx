@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 import { Form, Button, InputNumber } from 'antd'
 import { parseNumber } from '@/utils'
-import './index.scss'
 
 const Toolbar: FC = () => {
   const [width, setWidth] = useState(1200)
@@ -34,7 +33,7 @@ const Toolbar: FC = () => {
   const screenshot = () => {}
 
   return (
-    <Form layout="inline" size="middle" className="toolbar-form">
+    <Form layout="inline" size="middle" className="p-4 whitespace-nowrap overflow-x-auto bg-white border-b border-gray-300 align-middle">
       <Form.Item>
         <Button onClick={showWidgetDetail}>JSON</Button>
       </Form.Item>
