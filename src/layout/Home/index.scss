@@ -1,0 +1,23 @@
+.contain {
+  width: 100%;
+  height: calc(100vh - 65px);
+  display: flex;
+  // justify-content: center;
+  .left {
+    width: 200px;
+    height: 100%;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+  }
+  .right {
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+  }
+  .center {
+    flex: 1;
+    height: 100%;
+    background-color: #fff;
+  }
+}

@@ -3,4 +3,4 @@ import { getContacts, getContact } from '@/contacts'
 
 export const contactsLoader = () => getContacts()
 
-export const contactLoader = ({ params }:LoaderFunctionArgs) => getContact(params.contactId!)
+export const contactLoader = ({ params }: LoaderFunctionArgs) => getContact(params.contactId!)

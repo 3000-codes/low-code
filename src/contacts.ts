@@ -6,22 +6,22 @@ import { IContact } from './typing'
 // fake a cache so we don't slow down stuff we've already seen
 const fakeCache = new Map<string, boolean>()
 
-async function fakeNetwork (key?:string) {
+async function fakeNetwork(key?: string) {
   if (typeof key === 'undefined') {
     fakeCache.clear()
     return
   }
   if (!fakeCache.has(key)) {
     fakeCache.set(key, true)
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(resolve, Math.random() * 800)
     })
   }
 }
 
-export async function getContacts (query?:string) {
+export async function getContacts(query?: string) {
   await fakeNetwork(`getContacts:${query}`)
-  let contacts = await localforage.getItem('contacts') as IContact[]
+  let contacts = (await localforage.getItem('contacts')) as IContact[]
   if (!contacts) contacts = []
   if (query) {
     contacts = matchSorter(contacts, query, { keys: ['first', 'last'] })
@@ -29,7 +29,7 @@ export async function getContacts (query?:string) {
   return contacts.sort(sortBy('last', 'createdAt'))
 }
 
-export async function createContact () {
+export async function createContact() {
   await fakeNetwork()
   const id = Math.random().toString(36).substring(2, 9)
   const contact = { id, createdAt: Date.now() }
@@ -39,26 +39,26 @@ export async function createContact () {
   return contact
 }
 
-export async function getContact (id:string) {
+export async function getContact(id: string) {
   await fakeNetwork(`contact:${id}`)
-  const contacts = await localforage.getItem('contacts') as IContact[]
-  const contact = contacts.find(contact => contact.id === id)
+  const contacts = (await localforage.getItem('contacts')) as IContact[]
+  const contact = contacts.find((contact) => contact.id === id)
   return contact ?? null
 }
 
-export async function updateContact (id:string, updates:Partial<IContact>) {
+export async function updateContact(id: string, updates: Partial<IContact>) {
   await fakeNetwork()
-  const contacts = await localforage.getItem('contacts') as IContact[]
-  const contact = contacts.find(contact => contact.id === id)
+  const contacts = (await localforage.getItem('contacts')) as IContact[]
+  const contact = contacts.find((contact) => contact.id === id)
   if (!contact) throw new Error('No contact found for' + id)
   Object.assign(contact, updates)
   await set(contacts)
   return contact
 }
 
-export async function deleteContact (id:string) {
-  const contacts = await localforage.getItem('contacts') as IContact[]
-  const index = contacts.findIndex(contact => contact.id === id)
+export async function deleteContact(id: string) {
+  const contacts = (await localforage.getItem('contacts')) as IContact[]
+  const index = contacts.findIndex((contact) => contact.id === id)
   if (index > -1) {
     contacts.splice(index, 1)
     await set(contacts)
@@ -67,6 +67,6 @@ export async function deleteContact (id:string) {
   return false
 }
 
-function set (contacts :IContact[]) {
+function set(contacts: IContact[]) {
   return localforage.setItem('contacts', contacts)
 }
