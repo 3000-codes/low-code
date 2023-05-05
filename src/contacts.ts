@@ -6,7 +6,7 @@ import { IContact } from './typing'
 // fake a cache so we don't slow down stuff we've already seen
 const fakeCache = new Map<string, boolean>()
 
-async function fakeNetwork(key?: string) {
+async function fakeNetwork (key?: string) {
   if (typeof key === 'undefined') {
     fakeCache.clear()
     return
@@ -19,7 +19,7 @@ async function fakeNetwork(key?: string) {
   }
 }
 
-export async function getContacts(query?: string) {
+export async function getContacts (query?: string) {
   await fakeNetwork(`getContacts:${query}`)
   let contacts = (await localforage.getItem('contacts')) as IContact[]
   if (!contacts) contacts = []
@@ -29,7 +29,7 @@ export async function getContacts(query?: string) {
   return contacts.sort(sortBy('last', 'createdAt'))
 }
 
-export async function createContact() {
+export async function createContact () {
   await fakeNetwork()
   const id = Math.random().toString(36).substring(2, 9)
   const contact = { id, createdAt: Date.now() }
@@ -39,14 +39,14 @@ export async function createContact() {
   return contact
 }
 
-export async function getContact(id: string) {
+export async function getContact (id: string) {
   await fakeNetwork(`contact:${id}`)
   const contacts = (await localforage.getItem('contacts')) as IContact[]
   const contact = contacts.find((contact) => contact.id === id)
   return contact ?? null
 }
 
-export async function updateContact(id: string, updates: Partial<IContact>) {
+export async function updateContact (id: string, updates: Partial<IContact>) {
   await fakeNetwork()
   const contacts = (await localforage.getItem('contacts')) as IContact[]
   const contact = contacts.find((contact) => contact.id === id)
@@ -56,7 +56,7 @@ export async function updateContact(id: string, updates: Partial<IContact>) {
   return contact
 }
 
-export async function deleteContact(id: string) {
+export async function deleteContact (id: string) {
   const contacts = (await localforage.getItem('contacts')) as IContact[]
   const index = contacts.findIndex((contact) => contact.id === id)
   if (index > -1) {
@@ -67,6 +67,6 @@ export async function deleteContact(id: string) {
   return false
 }
 
-function set(contacts: IContact[]) {
+function set (contacts: IContact[]) {
   return localforage.setItem('contacts', contacts)
 }

@@ -8,4 +8,6 @@ const parseNumber = (value: any) => {
   return 0
 }
 
-export { parseNumber }
+const uuid = () => window.crypto.randomUUID()
+
+export { parseNumber, uuid }
