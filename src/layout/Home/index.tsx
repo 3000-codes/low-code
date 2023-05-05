@@ -1,9 +1,16 @@
 import { FC } from 'react'
-import { useLoaderData, Outlet, Link, Form } from 'react-router-dom'
+import {
+  useLoaderData,
+  Outlet,
+  Form,
+  NavLink,
+  useNavigation
+} from 'react-router-dom'
 import { IContact } from '@/typing'
 
 const Home: FC = () => {
   const contacts = useLoaderData() as IContact[]
+  const navigation = useNavigation()
   return (
     <>
       <div id="sidebar">
@@ -25,24 +32,25 @@ const Home: FC = () => {
           </Form>
         </div>
         <nav>
-          <ul>
           {contacts.length
             ? (
             <ul>
               {contacts.map((contact) => (
                 <li key={contact.id}>
-                  <Link to={`contacts/${contact.id}`}>
+                  <NavLink
+                    to={`contacts/${contact.id}`}
+                    className={({ isActive, isPending }) =>
+                      isActive ? 'active' : isPending ? 'pending' : ''
+                    }
+                  >
                     {contact.first || contact.last
                       ? (
-                      <>
-                        {contact.first} {contact.last}
-                      </>
+                      `${contact.first} ${contact.last}`
                         )
                       : (
                       <i>No Name</i>
-                        )}{' '}
-                    {contact.favorite && <span>★</span>}
-                  </Link>
+                        )}
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -52,10 +60,12 @@ const Home: FC = () => {
               <i>No contacts</i>
             </p>
               )}
-          </ul>
         </nav>
       </div>
-      <div id="detail">
+      <div
+        id="detail"
+        className={navigation.state === 'loading' ? 'loading' : ''}
+      >
         <Outlet />
       </div>
     </>

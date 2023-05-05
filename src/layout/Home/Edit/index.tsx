@@ -1,4 +1,4 @@
-import { Form, useLoaderData, redirect } from 'react-router-dom'
+import { Form, useLoaderData } from 'react-router-dom'
 import { IContact } from '@/typing'
 export default function EditContact () {
   const contact = useLoaderData() as IContact

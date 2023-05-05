@@ -6,8 +6,8 @@ import ErrorPage from '@/layout/ErrorPage'
 import NotFound from '@/layout/NotFound'
 
 // import { getContacts, createContact, getContact } from '@/contacts'
-import { contactsLoader, contactLoader } from '@/utils/loaders'
-import { contactsAction } from '@/utils/actions'
+import { contactsLoader, contactLoader } from '@/routes/loaders'
+import { createAction, updateContactAction, deleteContactAction } from '@/routes/actions'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <Home />,
     errorElement: <ErrorPage />,
     loader: contactsLoader,
-    action: () => contactsAction,
+    action: createAction,
     children: [
       {
         path: 'contacts/:contactId',
@@ -25,7 +25,12 @@ const router = createBrowserRouter([
       {
         path: 'contacts/:contactId/edit',
         element: <EditContact />,
-        loader: contactLoader
+        loader: contactLoader,
+        action: updateContactAction
+      },
+      {
+        path: 'contacts/:contactId/destroy',
+        action: deleteContactAction
       }
     ]
   },
