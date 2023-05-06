@@ -1,11 +1,17 @@
-import { useState, useRef, MouseEvent as RMouseEvent } from 'react'
+import { useState, useRef, MouseEvent as RMouseEvent, DragEvent as RDragEvent } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Grid from './Grid'
 import ContextMenu from '../ContextMenu'
-import './index.scss'
+import Widgets, { WidgetMap } from '../widgets'
+import { addComponent, COMPONENTS_KEY } from '@/store/components'
+import { uuid } from '@/utils'
+import { WidgetName, ComponentInfo } from '@/typing'
 const Editor = () => {
   const [showContextMenu, setShowContextMenu] = useState(false)
   const [contextMenuPosition, setContextMenuPosition] = useState([0, 0])
   const editorRef = useRef<HTMLDivElement>(null)
+  const dispatch = useDispatch()
+  const components = useSelector((state) => state[COMPONENTS_KEY]) as ComponentInfo[]
   const handleContextMenu = (e: RMouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
     const { current } = editorRef
@@ -17,12 +23,43 @@ const Editor = () => {
     setShowContextMenu(true)
     setContextMenuPosition([x, y])
   }
-  return <>
-    <div ref={editorRef} className="relative w100% h100%" onContextMenu={handleContextMenu}>
-      <Grid />
-      <ContextMenu show={showContextMenu} postion={contextMenuPosition}/>
-    </div>
-  </>
+
+  const handleDrop = (e: RDragEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const widgetName = e.dataTransfer.getData('widgetName') as WidgetName
+    const widget = Widgets.find(item => item.name === widgetName)
+    if (!widget) return
+    // TODO:获取当前鼠标位置，添加组件到store
+    // TODO:添加组件时，自动选中
+    const id = uuid()
+    const props = {}
+    const component: ComponentInfo = {
+      widget,
+      id,
+      props
+    }
+
+    dispatch(addComponent(component))
+  }
+  const handleDragOver = (e: RDragEvent) => {
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'copy' // 拖拽时鼠标样式,不修改则无法拖拽成功
+  }
+
+  return (
+    <>
+      <div ref={editorRef} className="relative w100% h100%" onContextMenu={handleContextMenu} onDrop={handleDrop} onDragOver={handleDragOver}>
+        <Grid />
+        <ContextMenu show={showContextMenu} postion={contextMenuPosition} />
+        <ul>
+          {components.map(item => (
+            <li key={item.id}>{item.widget.label}</li>
+          ))}
+        </ul>
+      </div>
+    </>
+  )
 }
 
 export default Editor
