@@ -42,7 +42,7 @@ const Text = (props: ITextProps) => {
     setEditMode(true)
     setCanEdit(true)
     setTimeout(() => {
-      textRef.current!.focus()
+      textRef.current?.focus()
     }, 0)
   }
   const handlePaste = (e: any) => {}

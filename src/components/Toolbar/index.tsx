@@ -34,7 +34,7 @@ const Toolbar: FC = () => {
   const screenshot = () => {}
 
   return (
-    <Form layout="inline" size="middle" className="toolbar-form">
+    <Form layout="inline" size="middle" className=" px-10px py-15px overflow-x-auto bg-#fff border-b-1px border-b-solid border-b-#ddd align-middle whitespace-nowrap">
       <Form.Item>
         <Button onClick={showWidgetDetail}>JSON</Button>
       </Form.Item>
