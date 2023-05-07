@@ -31,4 +31,4 @@ const {
 })
 
 export const { addComponent, removeComponent, updateComponent, clearComponents } = actions
-export default componentsReducer
+export { componentsReducer }

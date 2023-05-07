@@ -2,7 +2,7 @@ import React from 'react'
 import Circle, { defaultProps as CircleProps } from './Circle'
 import { WidgetInfo } from '@/typing'
 
-const Widgets:WidgetInfo[] = [
+const Widgets: WidgetInfo[] = [
   {
     name: 'Circle',
     label: '圆形',
@@ -11,7 +11,7 @@ const Widgets:WidgetInfo[] = [
     icon: '24gl-circle'
   }
 ]
-const WidgetMap = new Map<string, React.ComponentType<any>>()
+const WidgetMap = new Map<string, React.FC<any>>()
 
 WidgetMap.set('Circle', Circle)
 
