@@ -10,7 +10,7 @@ const WidgetList = () => {
     e.dataTransfer.setData('widgetName', widgetName)
   }
   return (
-    <div className="widget-list h65% p10px grid gap-x-19px gap-y-10px grid-cols-[repeat(auto-fill,80px)] grid-rows-[repeat(auto-fill,40px)]" onDragStart={handleDragStart}>
+    <div className="widget-list h65% p10px flex " onDragStart={handleDragStart}>
       {Widgets.map((item) => (
         <div
           key={item.name}

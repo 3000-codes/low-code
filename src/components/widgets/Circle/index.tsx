@@ -1,18 +1,15 @@
-import { FC, CSSProperties } from 'react'
-type CircleProps = {
-  style: CSSProperties
-  text?: string
-}
-const defaultProps: CircleProps = {
+import { FC } from 'react'
+import { WidgetProps } from '@/typing'
+const defaultProps: WidgetProps = {
   style: {
     left: 0,
     top: 0
   },
   text: '圆'
 }
-const Circle: FC<CircleProps> = (props: CircleProps) => {
+const Circle: FC<WidgetProps> = (props) => {
   return (
-    <div className="w60px h60px border-rd-50% b b-#ccc b-solid absolute flex justify-center items-center" style={props.style}>
+    <div className="w100% h100% border-rd-50% b b-#ccc b-solid absolute flex justify-center items-center" style={props.style}>
       {props.text}
     </div>
   )

@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react'
 export type RouteError = {
   statusText: string
   message: string
@@ -21,7 +22,12 @@ type Contact = {
 export type IContact = Partial<Contact>
 
 // 所有组件的名称
-type WidgetName = 'Circle' | 'Table'
+type WidgetName = 'Circle' |'Rectangle'| 'Table'
+
+export type WidgetProps = {
+  style: CSSProperties
+  text?: string
+}
 
 // 组件的基本信息
 export type WidgetInfo = {
