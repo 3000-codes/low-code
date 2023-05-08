@@ -12,7 +12,7 @@ const Editor = () => {
   const [contextMenuPosition, setContextMenuPosition] = useState([0, 0])
   const editorRef = useRef<HTMLDivElement>(null)
   const dispatch = useDispatch()
-  const components = useSelector((state:RootState) => state[COMPONENTS_KEY]) as ComponentInfo[]
+  const components = useSelector((state: RootState) => state[COMPONENTS_KEY]) as ComponentInfo[]
   const handleContextMenu = (e: RMouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
     const { current } = editorRef
@@ -29,7 +29,7 @@ const Editor = () => {
     e.preventDefault()
     e.stopPropagation()
     const widgetName = e.dataTransfer.getData('widgetName') as WidgetName
-    const widget = Widgets.find(item => item.name === widgetName)
+    const widget = Widgets.find((item) => item.name === widgetName)
     if (!widget) return
     // TODO:获取当前鼠标位置，添加组件到store
     const { current } = editorRef
@@ -69,12 +69,10 @@ const Editor = () => {
             <li key={item.id}>{item.widget.label}</li>
           ))}
         </ul> */}
-        {
-          components.map(item => {
-            const Widget = WidgetMap.get(item.widget.name) as FC<any>
-            return <Widget key={item.id} {...item.props} />
-          })
-        }
+        {components.map((item) => {
+          const Widget = WidgetMap.get(item.widget.name) as FC<any>
+          return <Widget key={item.id} {...item.props} />
+        })}
       </div>
     </>
   )

@@ -1,6 +1,6 @@
 import { FC, CSSProperties } from 'react'
 type CircleProps = {
-  style: CSSProperties,
+  style: CSSProperties
   text?: string
 }
 const defaultProps: CircleProps = {
@@ -10,13 +10,10 @@ const defaultProps: CircleProps = {
   },
   text: '圆'
 }
-const Circle:FC<CircleProps> = (props: CircleProps) => {
+const Circle: FC<CircleProps> = (props: CircleProps) => {
   return (
-    <div className="w60px h60px border-rd-50% b b-#ccc b-solid absolute flex justify-center items-center" style={props.style}
-    >
-      {
-        props.text
-      }
+    <div className="w60px h60px border-rd-50% b b-#ccc b-solid absolute flex justify-center items-center" style={props.style}>
+      {props.text}
     </div>
   )
 }

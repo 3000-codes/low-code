@@ -21,7 +21,7 @@ type Contact = {
 export type IContact = Partial<Contact>
 
 // 所有组件的名称
-type WidgetName='Circle'|'Table'
+type WidgetName = 'Circle' | 'Table'
 
 // 组件的基本信息
 export type WidgetInfo = {

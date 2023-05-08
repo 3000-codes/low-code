@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <Toolbar />
       <main className="flex w100% h-[calc(100%-65px)] ">
-        <section className="w200px h-100% bg-#fff  b-[1px_solid_#ccc]" >
+        <section className="w200px h-100% bg-#fff b b-solid b-#ccc">
           <WidgetList />
         </section>
         <section className="flex-1 bg-#fff p20px overflow-hidden">
