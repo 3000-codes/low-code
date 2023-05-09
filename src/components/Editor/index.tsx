@@ -34,8 +34,8 @@ const Editor = () => {
     if (!current) return
     // FIXME: 当鼠标在边缘时，菜单展示不完全
     const { left, top } = current.getBoundingClientRect()
-    const x = Math.floor((e.clientX - left - 30) / 2)
-    const y = Math.floor((e.clientY - top - 30) / 2)
+    const x = Math.floor((e.clientX - left - 30))
+    const y = Math.floor((e.clientY - top - 30))
     const widgetId = e.dataTransfer.getData('widgetId')
     // 更新组件
     if (widgetId) {

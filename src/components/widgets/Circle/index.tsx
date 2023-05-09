@@ -1,15 +1,12 @@
 import { FC } from 'react'
 import { WidgetProps } from '@/typing'
 const defaultProps: WidgetProps = {
-  style: {
-    left: 0,
-    top: 0
-  },
+  style: { },
   text: '圆'
 }
 const Circle: FC<WidgetProps> = (props) => {
   return (
-    <div className="w100% h100% border-rd-50% b b-#ccc b-solid absolute flex justify-center items-center" style={props.style}>
+    <div className="w100% h100% border-rd-50% b b-#ccc b-solid  flex justify-center items-center" style={props.style}>
       {props.text}
     </div>
   )

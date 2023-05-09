@@ -1,12 +1,16 @@
 import { FC, useState } from 'react'
 import { Form, Button, InputNumber } from 'antd'
+import { useDispatch } from 'react-redux'
 import { parseNumber } from '@/utils'
+import { clearComponents } from '@/store'
+
 import './index.scss'
 
 const Toolbar: FC = () => {
   const [width, setWidth] = useState(1200)
   const [height, setHeight] = useState(800)
   const [scale, setScale] = useState(100)
+  const dispatch = useDispatch()
 
   // TODO:展示当前选中控件的JSON,未选中则展示画布JSON
   const showWidgetDetail = () => {}
@@ -21,7 +25,9 @@ const Toolbar: FC = () => {
   // TODO:保存
   const save = () => {}
   // TODO:清空画布
-  const clear = () => {}
+  const clear = () => {
+    dispatch(clearComponents())
+  }
   // TODO:组合
   const combine = () => {}
   // TODO:拆分

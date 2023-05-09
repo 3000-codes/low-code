@@ -19,8 +19,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/*":["./src/*"]
-    }
+      "@/*": ["./src/*"]
+    },
+    "types": ["babylonjs"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
