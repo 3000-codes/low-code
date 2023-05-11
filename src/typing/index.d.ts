@@ -1,4 +1,7 @@
 import { CSSProperties } from 'react'
+
+declare module ''
+
 export type RouteError = {
   statusText: string
   message: string

@@ -5,7 +5,7 @@ import roofJpg from '@/assets/images/roof.jpg'
 import cubehousePng from '@/assets/images/cubehouse.png'
 const CanvasDemo = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-
+  // https://doc.babylonjs.com/features/introductionToFeatures/chap2/combine
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -41,7 +41,7 @@ const CanvasDemo = () => {
     const buildBox = () => {
       // texture
       const boxMat = new BABYLON.StandardMaterial('boxMat')
-      boxMat.diffuseTexture = new BABYLON.Texture('https://assets.babylonjs.com/environments/cubehouse.png')
+      boxMat.diffuseTexture = new BABYLON.Texture(cubehousePng)
 
       // options parameter to set different images on each side
       const faceUV = []
@@ -61,7 +61,7 @@ const CanvasDemo = () => {
 
     const buildBox2 = () => {
       const boxMat = new BABYLON.StandardMaterial('boxMat')
-      boxMat.diffuseTexture = new BABYLON.Texture('https://assets.babylonjs.com/environments/cubehouse.png')
+      boxMat.diffuseTexture = new BABYLON.Texture(cubehousePng)
       const faceUV = []
       faceUV[0] = new BABYLON.Vector4(0.6, 0.0, 1.0, 1.0) // rear face
       faceUV[1] = new BABYLON.Vector4(0.0, 0.0, 0.4, 1.0) // front face
@@ -79,7 +79,7 @@ const CanvasDemo = () => {
     const buildRoof = () => {
       // texture
       const roofMat = new BABYLON.StandardMaterial('roofMat')
-      roofMat.diffuseTexture = new BABYLON.Texture('https://assets.babylonjs.com/environments/roof.jpg')
+      roofMat.diffuseTexture = new BABYLON.Texture(roofJpg)
 
       const roof = BABYLON.MeshBuilder.CreateCylinder('roof', { diameter: 1.3, height: 1.2, tessellation: 3 })
 
