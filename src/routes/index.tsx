@@ -2,10 +2,11 @@ import { createBrowserRouter } from 'react-router-dom'
 
 // import Index from '@/layout/Index'
 import Home from '@/layout/Home'
-import CanvasDemo from '@/layout/CanvasDemo'
+import Babylon from '@/layout/Babylon'
 import ErrorPage from '@/layout/ErrorPage'
 import NotFound from '@/layout/NotFound'
 import Game from '@/games/ToHellWithJohnny'
+import CanvasDemo from '@/layout/Canvas'
 
 // const errorElement = (<div>Oops! There was an error.</div>)
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     // element: <Home />,
     Component: Home,
     errorElement: <ErrorPage />
+  },
+  {
+    path: '/babylon-demo',
+    element: <Babylon />
   },
   {
     path: '/canvas-demo',

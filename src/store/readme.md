@@ -202,4 +202,5 @@ export default Todos
 - [持久化](https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist)
   - [文章](https://juejin.cn/post/7138672042185850917)
 - [redux-saga](https://redux-saga.js.org/)
+- redux-thunk
 - ts 类型支持
