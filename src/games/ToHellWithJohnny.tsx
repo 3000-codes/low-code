@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 
 function MasterBall () {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [context, setCtx] = useState<CanvasRenderingContext2D | null>(null)
+  const [, setCtx] = useState<CanvasRenderingContext2D | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current

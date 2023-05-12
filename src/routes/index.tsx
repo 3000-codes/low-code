@@ -7,6 +7,7 @@ import ErrorPage from '@/layout/ErrorPage'
 import NotFound from '@/layout/NotFound'
 import Game from '@/games/ToHellWithJohnny'
 import CanvasDemo from '@/layout/Canvas'
+import Test from '@/layout/Test'
 
 // const errorElement = (<div>Oops! There was an error.</div>)
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: '/game',
     element: <Game />
+  },
+  {
+    path: '/test',
+    element: <Test />
   },
   {
     path: '/404',
