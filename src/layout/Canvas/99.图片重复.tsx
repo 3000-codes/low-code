@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react'
 import canvasCreatepattern from './images/canvas_createpattern.png'
+import { createCanvas } from './tools'
 
 function myCanvas (width:number, height:number) {
-  const canvas = document.createElement('canvas')
-  canvas.width = width
-  canvas.height = height
+  const canvas = createCanvas(width, height)
   const ctx = canvas.getContext('2d')
   if (!ctx) return
   const img = new Image()

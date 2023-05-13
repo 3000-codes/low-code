@@ -6,7 +6,7 @@ import Babylon from '@/layout/Babylon'
 import ErrorPage from '@/layout/ErrorPage'
 import NotFound from '@/layout/NotFound'
 import Game from '@/games/ToHellWithJohnny'
-import CanvasDemo from '@/layout/Canvas'
+import CanvasDemo from '@/games/GoBang'
 import Test from '@/layout/Test'
 
 // const errorElement = (<div>Oops! There was an error.</div>)

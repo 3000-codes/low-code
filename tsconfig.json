@@ -23,6 +23,6 @@
     },
     "types": ["babylonjs"]
   },
-  "include": ["src"],
+  "include": ["src", "src/layout/Canvas/.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
