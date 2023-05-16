@@ -7,6 +7,7 @@ import ErrorPage from '@/layout/ErrorPage'
 import NotFound from '@/layout/NotFound'
 import Game from '@/games/ToHellWithJohnny'
 import CanvasDemo from '@/layout/Canvas'
+import OneZeroTwoFour from '@/games/1024'
 import Test from '@/layout/Test'
 
 // const errorElement = (<div>Oops! There was an error.</div>)
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     // element: <Home />,
     Component: Home,
     errorElement: <ErrorPage />
+  },
+  {
+    path: '/1024',
+    element: <OneZeroTwoFour />
   },
   {
     path: '/babylon-demo',
